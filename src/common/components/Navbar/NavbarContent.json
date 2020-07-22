@@ -1,0 +1,46 @@
+{
+    "leftNavbar": [
+      {"title": "Home", "path": "/", "type": "internal"},
+      {"title": "Visit", "path": "/Visit", "type": "internal"},
+      {"title": "Movie Search", "path": "/MovieSearch","type": "internal"},
+      {
+        "title": "News",
+        "path": "",
+        "children": [
+            {
+              "title": "CNN",
+              "path": "",
+              "type": "external",
+              "url":
+                "https://www.cnn.com",
+              "target": "_blank"
+            },
+            {
+              "title": "Daily Mail",
+              "path": "",
+              "type": "external",
+              "url": "https://www.dailymail.co.uk/ushome/index.html",
+              "target": "_blank"
+            },
+            {
+              "title": "Fox Newws",
+              "path": "",
+              "type": "external",
+              "url":
+                "https://www.foxnews.com/",
+              "target": "_blank"
+            },
+            {"title": "Forms", "path": "", "type": "external", "url": "https://www.optumrx.com/oe_onboarding/forms", "target": "_blank"}
+          ]
+      }
+    ],
+    "rightNavbar": [
+      {
+        "title": "Google",
+        "path": "",
+        "type": "external",
+        "url": "https://www.google.com",
+        "target": "_blank"
+      }
+    ]
+  }
