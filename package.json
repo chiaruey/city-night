@@ -6,6 +6,7 @@
     "dev": "next",
     "build": "next build && next export",
     "start": "next start  -p $PORT",
+    "heroku-postbuild": "npm run build",
     "storybook": "start-storybook -p 6006 -c .storybook"
   },
   "dependencies": {
