@@ -8,6 +8,9 @@ export interface MovieInfo {
     genre_ids: number[];
     popularity: number;
     original_language: string;
+    poster_path: string;
+    backdrop_path: string;
+    original_title: string;
 }
 
 export interface MovieSearchResponse {
