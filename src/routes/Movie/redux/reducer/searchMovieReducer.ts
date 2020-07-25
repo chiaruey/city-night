@@ -4,7 +4,7 @@ import {SearchMovieAction} from '../action/types';
 import {MovieSearchState} from '../../MovieSearch/MovieSearchState';
 
 const defaultSearchState: MovieSearchState = {
-  payload: {query: ""},
+  payload: {query: "", page: 1},
   isSearchInProgress: false
 };
 

@@ -49,7 +49,8 @@ export const MovieSearch: React.FC = () => {
 
     const submitForm = (formValues: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
         const payload: MovieSearchPayload = {
-            query: formValues.movieTitle
+            query: formValues.movieTitle,
+            page: 1
         };
 
         searchForMovie(payload);
