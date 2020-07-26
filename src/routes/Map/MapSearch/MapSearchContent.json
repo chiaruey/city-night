@@ -1,7 +1,0 @@
-{
-    "fieldsRequiredLabel": "Fields marked with an asterisk * are required",
-    "locationLabel": "The place I want to visit",
-    "submitButtonLabel": "Search",
-    "clearButtonLabel": "Clear",
-    "zipError": "Zip code is required"
-  }

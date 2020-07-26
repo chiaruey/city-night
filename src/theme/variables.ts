@@ -1,30 +1,6 @@
 const colors = {
-  // primary colors
   white: '#FFFFFF',
-  // orange1: '#E87722',
-  // gold1: '#F2B411',
-  // gray1: '#222222',
-  // gray2: '#444444',
-  // gray3: '#636363',
-  // gray4: '#959595',
-  // gray5: '#B3B3B3',
-  // gray6: '#E0E0E0',
-  // gray7: '#EFEFEE',
 
-  // accent colors
-  // red1: '#A32A2E',
-  // red2: '#D13F44',
-  // purple1: '#422C88',
-  // purple2: '#8061BC',
-  // teal1: '#007C89',
-  // teal2: '#6FC1B1',
-  // green1: '#90BC53',
-
-  // Specific use s
-  // blue1: '#00396C',
-  // blue2: '#316BBE',
-  // blue3: '#83C8FF',
-  // blue4: '#003F6A',
   skyblue: '#87CEEB',
   deepSkyBlue: '#00BFFF',
   seaBlue: '#82E0E2',

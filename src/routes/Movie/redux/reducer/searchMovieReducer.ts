@@ -1,6 +1,4 @@
 import {Reducer, AnyAction} from 'redux';
-
-import {SearchMovieAction} from '../action/types';
 import {MovieSearchState} from '../../MovieSearch/MovieSearchState';
 
 const defaultSearchState: MovieSearchState = {

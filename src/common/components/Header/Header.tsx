@@ -9,23 +9,6 @@ const GridContainer = styled(Grid)`
   padding: 10px 15px;
 `;
 
-const GridRight = styled(Grid)`
-  text-align: end;
-
-  svg {
-    margin-right: 7px;
-    vertical-align: middle;
-    color: #555;
-  }
-`;
-
-const GridResize = styled(GridRight)`
-  &&.MuiGrid-item {
-    flex-basis: auto;
-  }
-`;
-
-
 
 const useStyles = makeStyles((theme) => ({
   paper: {
