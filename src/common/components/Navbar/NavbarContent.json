@@ -1,7 +1,6 @@
 {
     "leftNavbar": [
       {"title": "Home", "path": "/", "type": "internal"},
-      {"title": "Visit", "path": "/Visit", "type": "internal"},
       {"title": "Movie Search", "path": "/MovieSearch","type": "internal"},
       {
         "title": "News",

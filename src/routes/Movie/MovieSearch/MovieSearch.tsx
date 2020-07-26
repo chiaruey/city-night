@@ -43,7 +43,7 @@ interface FormValues {
 }
 
 export const MovieSearch: React.FC = () => {
-    const {searchForMovie , result, isInProgress} = useMovieSearchState();
+    const {searchForMovie , result } = useMovieSearchState();
 
     const classes = useStyles();
 

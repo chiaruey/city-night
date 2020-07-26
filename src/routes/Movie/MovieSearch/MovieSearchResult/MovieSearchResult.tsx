@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, Box, Avatar } from '@material-ui/core';
+import { Grid, Typography, Box } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { MovieSearchResponse, MovieInfo } from '../MovieSearchResponse';
 import { MovieInfoCard } from '../MovieInfoCard';
@@ -59,7 +59,7 @@ export const MovieSearchResult: React.FC<MovieSearchResultProps> = (props) => {
     let resultMessage = "No movie found!";
 
     if (searchResponse) {
-      resultMessage = searchResponse.total_results + " movies has been found, but only 20 movies can be displayed at once";
+      resultMessage = searchResponse.total_results + " movies has been found" + (searchResponse.total_results > 20 ? ", but only 20 movies can be displayed at once": "");
     }
 
     return (
