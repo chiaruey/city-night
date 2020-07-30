@@ -6,16 +6,15 @@ import {MovieSearchResponse} from '../../MovieSearch/MovieSearchResponse';
 export async function searchMovie(payload: MovieSearchPayload) {
   const params: any = {...payload};
 
-  const headers = {
-    'Access-Control-Allow-Origin': '*'
-  };
 
   const movieSearch = await axios.get<MovieSearchResponse>(`${process.env.movieServiceUrl}/movie-search`, {
-    headers, params
+    params
   });
 
   const movieSearchResponse: MovieSearchResponse = movieSearch.data;
 
+  movieSearchResponse.query = payload.query;
+  
   console.log('searchMovieService.searchMovie --> movieSearchResponse', movieSearchResponse);
 
   return movieSearchResponse;

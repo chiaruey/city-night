@@ -15,6 +15,7 @@ export interface MovieInfo {
 
 export interface MovieSearchResponse {
     page: number;
+    query: string;
     total_results: number;
     total_pages: number;
     results: MovieInfo[];

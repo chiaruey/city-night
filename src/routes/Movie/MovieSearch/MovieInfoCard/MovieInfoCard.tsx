@@ -59,7 +59,7 @@ export const MovieInfoCard: React.FC<MovieInfoCardProps>= (props) => {
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <img src={`https://image.tmdb.org/t/p/w500/${movieInfo.poster_path}`} className={classes.poster}/>
+            {movieInfo.poster_path && <img src={`https://image.tmdb.org/t/p/w500/${movieInfo.poster_path}`} className={classes.poster}/>}
           </Grid>
         </Grid>
     );
