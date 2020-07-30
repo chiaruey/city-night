@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, Button, Container, CssBaseline, Typography } from '@material-ui/core';
+import { Avatar, Button, Container, CssBaseline, Typography, CircularProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Form, Field, Formik, FormikHelpers } from 'formik';
 import { TextField } from 'formik-material-ui';
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
     },
     form: {
-        width: '100%', // Fix IE 11 issue.
+        width: '100%',
         marginTop: theme.spacing(1),
     },
     container: {
@@ -43,7 +43,7 @@ interface FormValues {
 }
 
 export const MovieSearch: React.FC = () => {
-    const {searchForMovie , result } = useMovieSearchState();
+    const {searchForMovie , result, isInProgress } = useMovieSearchState();
 
     const classes = useStyles();
 
@@ -99,8 +99,10 @@ export const MovieSearch: React.FC = () => {
                         </Form>
                     )}
                 </Formik>
+                {isInProgress ? <CircularProgress /> : null}
+                {isInProgress}
             </div>
-            <MovieSearchResult movieSearchResponse={result} />
+            <MovieSearchResult movieSearchResponse={result} searchForMovie={searchForMovie} result={result} isInProgress={isInProgress} />
         </Container>
     );
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {withKnobs} from '@storybook/addon-knobs';
 
-import {Pagination} from '.';
+import {MoviePagination} from '.';
 
 export default {
   title: 'Components/Pagination',
@@ -15,5 +15,5 @@ export const PaginationStory = () => {
     setPage(newPage);
   };
 
-  return <Pagination recordCount={100} selectedPage={page} onChange={handleChangePage} />;
+  return <MoviePagination recordCount={100} selectedPage={page} onChange={handleChangePage} />;
 };

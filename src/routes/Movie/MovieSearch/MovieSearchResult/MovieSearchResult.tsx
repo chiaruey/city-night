@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid, Typography, Box } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { MovieSearchResponse, MovieInfo } from '../MovieSearchResponse';
 import { MovieInfoCard } from '../MovieInfoCard';
+import { MoviePagination } from '../../../../common/components/MoviePagination';
+import { MovieSearchPayload } from '../MovieSearchPayload';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,6 +28,9 @@ const useStyles = makeStyles((theme: Theme) =>
     poster: {
       width: "100%",
       height: "100%"
+    },
+    pagination: {
+      margin: "5%"
     }
   })
 );
@@ -33,10 +38,11 @@ const useStyles = makeStyles((theme: Theme) =>
 const listOfMovies = (searchResponse: MovieSearchResponse, classes: any) => {
   const res: any[] = [];
   if (searchResponse.results) {
+    const page = searchResponse.page;
     searchResponse.results.forEach((movieInfo: MovieInfo, index) => {
       console.log('list of movies index -> ' + index + ', title = ' + movieInfo.title);
       res.push(
-        <MovieInfoCard movieInfo={movieInfo} index={index+1} />
+        <MovieInfoCard movieInfo={movieInfo} index={index + (page - 1) * 20} />
       )
 
     });
@@ -48,18 +54,44 @@ const listOfMovies = (searchResponse: MovieSearchResponse, classes: any) => {
 
 interface MovieSearchResultProps {
   movieSearchResponse: MovieSearchResponse | undefined;
+  searchForMovie: any;
+  result: any;
+  isInProgress: any;
 }
 
 export const MovieSearchResult: React.FC<MovieSearchResultProps> = (props) => {
-  const { movieSearchResponse } = props;
+  const { movieSearchResponse, searchForMovie } = props;
 
+  let query = "hello";
+
+  const [page, setPage] = useState(1);
+
+  const handleChangePage = (event: unknown, newPage: number) => {
+    if (page !== newPage) {
+      setPage(newPage);
+      const payload: MovieSearchPayload = {
+        query: query,
+        page: newPage
+      };
+      searchForMovie(payload)
+    }
+  };
+
+  useEffect(() => {
+    setPage(1);
+  }, [movieSearchResponse?.total_results]);
 
   const classes = useStyles();
+  let movieCount = 0;
   const generateResultComponent = (searchResponse: MovieSearchResponse | undefined) => {
     let resultMessage = "No movie found!";
 
     if (searchResponse) {
-      resultMessage = searchResponse.total_results + " movies has been found" + (searchResponse.total_results > 20 ? ", but only 20 movies can be displayed at once": "");
+      movieCount = searchResponse.total_results;
+      query = searchResponse.query;
+      const totalPage = Math.ceil(movieCount / 20);
+      resultMessage = movieCount + " movie" + ((movieCount > 1) ? "s" : "") +
+        " has been found by searching : \"" + query + "\" ( page " + page + " of " + totalPage + " )";
     }
 
     return (
@@ -70,10 +102,15 @@ export const MovieSearchResult: React.FC<MovieSearchResultProps> = (props) => {
               <Box >
                 <Typography variant="h5" gutterBottom>
                   {resultMessage}
-                </Typography>                
+                </Typography>
               </Box>
             </Grid>
             {searchResponse && listOfMovies(searchResponse, classes)}
+            <Grid item xs={12}>
+              <Box className={classes.pagination}>
+                <MoviePagination recordCount={movieCount} selectedPage={page} onChange={handleChangePage} />
+              </Box>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
