@@ -10,12 +10,10 @@ import {Container, CssBaseline} from '@material-ui/core';
 import {ExplorerDefault} from '../src/theme/ExplorerDefault';
 import {createReduxStore} from '../src/redux/store';
 import {colors} from '../src/theme/variables';
-import {Header} from '../src/common/components/Header';
+import {Navigation} from '../src/common/components/Navigation';
 import {StickyFooter} from '../src/common/components/StickyFooter';
-import Navbar from '../src/common/components/Navbar';
-import NavbarContent from '../src/common/components/Navbar/NavbarContent.json';
 
-const HeaderContainer = styled(Container)`
+const NavigationContainer = styled(Container)`
   &&.MuiContainer-root {
     background-color: ${colors.skyblue};
   }
@@ -27,11 +25,6 @@ const ContentContainer = styled(Container)`
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-  }
-`;
-const NavbarContainer = styled(Container)`
-  &&.MuiContainer-root {
-    padding: 0px 0px;
   }
 `;
 const FooterContainer = styled(Container)`
@@ -65,12 +58,9 @@ class ExplorerApp extends App<{pageProps: any; store: Store}> {
         <Provider store={store}>
           <ThemeProvider theme={ExplorerDefault}>
             <CssBaseline />
-            <HeaderContainer maxWidth="xl">
-              <Header />
-            </HeaderContainer>
-            <NavbarContainer maxWidth="xl">
-              <Navbar content={NavbarContent}/>
-            </NavbarContainer>
+            <NavigationContainer maxWidth="xl">
+              <Navigation />
+            </NavigationContainer>
             <ContentContainer maxWidth="xl">
               <Component {...pageProps} />
             </ContentContainer>
