@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Typography, Avatar } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { MovieInfo } from '../MovieSearchResponse';
+import { MovieInfo } from '../MovieSchema';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

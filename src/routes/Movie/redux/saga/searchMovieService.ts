@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {MovieSearchPayload} from '../../MovieSearch/MovieSearchPayload';
-import {MovieSearchResponse} from '../../MovieSearch/MovieSearchResponse';
+import {MovieSearchResponse} from '../../MovieSchema';
 
 export async function searchMovie(payload: MovieSearchPayload) {
   const params: any = {...payload};

@@ -4,7 +4,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { MovieSearchResponse, MovieInfo } from '../../MovieSchema';
 import { MovieInfoCard } from '../../MovieInfoCard';
 import { MoviePagination } from '../../MoviePagination';
-import { MovieSearchPayload } from '../MovieSearchPayload';
+import { PopularMoviesPayload } from '../PopularMoviesPayload';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -52,34 +52,31 @@ const listOfMovies = (searchResponse: MovieSearchResponse, classes: any) => {
 
 }
 
-interface MovieSearchResultProps {
-  movieSearchResponse: MovieSearchResponse | undefined;
-  searchForMovie: any;
+interface PopularMoviesResultProps {
+  popularMoviesResponse: MovieSearchResponse | undefined;
+  popularMovies: any;
   result: any;
   isInProgress: any;
 }
 
-export const MovieSearchResult: React.FC<MovieSearchResultProps> = (props) => {
-  const { movieSearchResponse, searchForMovie } = props;
-
-  let query = "hello";
+export const PopularMoviesResult: React.FC<PopularMoviesResultProps> = (props) => {
+  const { popularMoviesResponse, popularMovies } = props;
 
   const [page, setPage] = useState(1);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     if (page !== newPage) {
       setPage(newPage);
-      const payload: MovieSearchPayload = {
-        query: query,
+      const payload: PopularMoviesPayload = {
         page: newPage
       };
-      searchForMovie(payload)
+      popularMovies(payload)
     }
   };
 
   useEffect(() => {
     setPage(1);
-  }, [movieSearchResponse?.total_results]);
+  }, [popularMoviesResponse?.total_results]);
 
   const classes = useStyles();
   let movieCount = 0;
@@ -88,10 +85,9 @@ export const MovieSearchResult: React.FC<MovieSearchResultProps> = (props) => {
 
     if (searchResponse) {
       movieCount = searchResponse.total_results;
-      query = searchResponse.query;
       const totalPage = Math.ceil(movieCount / 20);
       resultMessage = movieCount + " movie" + ((movieCount > 1) ? "s" : "") +
-        " has been found by searching : \"" + query + "\" ( page " + page + " of " + totalPage + " )";
+        " has been found ( page " + page + " of " + totalPage + " )";
     }
 
     return (
@@ -117,8 +113,8 @@ export const MovieSearchResult: React.FC<MovieSearchResultProps> = (props) => {
     );
   };
 
-  if (movieSearchResponse) {
-    return generateResultComponent(movieSearchResponse); return generateResultComponent(movieSearchResponse);
+  if (popularMoviesResponse) {
+    return generateResultComponent(popularMoviesResponse); return generateResultComponent(popularMoviesResponse);
   } else {
     return <></>;
   }

@@ -1,4 +1,4 @@
-import {MovieSearchResponse} from '../../MovieSearch/MovieSearchResponse';
+import {MovieSearchResponse} from '../../MovieSchema';
 import {MovieSearchPayload} from '../../MovieSearch/MovieSearchPayload';
 
 const searchMovieActionType = 'Movie/searchMovie';

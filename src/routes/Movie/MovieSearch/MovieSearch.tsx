@@ -100,7 +100,6 @@ export const MovieSearch: React.FC = () => {
                     )}
                 </Formik>
                 {isInProgress ? <CircularProgress /> : null}
-                {isInProgress}
             </div>
             <MovieSearchResult movieSearchResponse={result} searchForMovie={searchForMovie} result={result} isInProgress={isInProgress} />
         </Container>

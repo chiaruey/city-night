@@ -145,11 +145,16 @@ export const Navigation: React.FC = () => {
               </List>
               <Divider />
               <List>
-                <ListItem button component='a' key='Movie Search' onClick={handleDrawerClose}>
+                <ListItem button key='Movie Search' onClick={handleDrawerClose}>
                   <Link href='/MovieSearch' as='/MovieSearch' >
                     <a className={classes.link}>Movie Search</a>
                   </Link>
                 </ListItem>
+                <ListItem button key='Popular Movies' onClick={handleDrawerClose}>
+                  <Link href='/PopularMovies' as='/PopularMovies' >
+                    <a className={classes.link}>Popular Movies</a>
+                  </Link>
+                </ListItem>                
               </List>
               <Divider />
               <List>

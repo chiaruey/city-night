@@ -20,4 +20,4 @@ export interface MovieSearchResponse {
     total_pages: number;
     results: MovieInfo[];
 }
-  
+

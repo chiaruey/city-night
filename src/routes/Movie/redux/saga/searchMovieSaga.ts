@@ -5,7 +5,7 @@ import {
     searchMovieResolved,
     searchMovieRejected
 } from '../action/searchMovieAction';
-import { MovieSearchResponse } from '../../MovieSearch/MovieSearchResponse';
+import { MovieSearchResponse } from '../../MovieSchema';
 
 import { searchMovie } from './searchMovieService';
 

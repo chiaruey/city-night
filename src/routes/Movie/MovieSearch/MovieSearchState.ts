@@ -1,6 +1,6 @@
 
 import {MovieSearchPayload} from './MovieSearchPayload';
-import {MovieSearchResponse} from './MovieSearchResponse';
+import {MovieSearchResponse} from '../MovieSchema';
 
 export interface MovieSearchState {
   searchResults?: MovieSearchResponse;
