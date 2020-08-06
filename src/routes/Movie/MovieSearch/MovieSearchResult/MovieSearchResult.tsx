@@ -40,7 +40,6 @@ const listOfMovies = (searchResponse: MovieSearchResponse, classes: any) => {
   if (searchResponse.results) {
     const page = searchResponse.page;
     searchResponse.results.forEach((movieInfo: MovieInfo, index) => {
-      console.log('list of movies index -> ' + index + ', title = ' + movieInfo.title);
       res.push(
         <MovieInfoCard movieInfo={movieInfo} index={index + (page - 1) * 20} />
       )
