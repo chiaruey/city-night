@@ -1,20 +1,12 @@
 import React from 'react';
-import { Button, Grid, Typography, CardHeader, CardContent, CardMedia, Card, CardActions, CardActionArea } from '@material-ui/core';
+import { Grid, Typography, CardHeader, CardContent, CardMedia, Card, CardActionArea } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    movieInfoCard: {
-      backgroundColor: "#fffff",
-      border: "solid 1px #002984",
-      padding: "3%"
-    },
-    resultSection: {
-      maxWidth: '100%',
-      minHeight: theme.spacing(60),
-      maxHeight: 'fit-content',
-      borderRadius: '6px',
-      padding: '2% 3% 2% 3%'
+    heroImageCard: {
+      padding: "3%",
+      display: "flex"
     },
     bigIcon: {
       width: theme.spacing(8),
@@ -48,7 +40,7 @@ export const HeroImageCard: React.FC<HeroImageCardProps> = (props) => {
   const classes = useStyles();
 
   return (
-    <Grid item xs={12} sm={12} className={classes.movieInfoCard}>
+    <Grid item xs={12} sm={12} className={classes.heroImageCard}>
       <Card className={classes.root}>
         <CardHeader title={title} titleTypographyProps={{ variant: 'h5' }} />
 
@@ -65,11 +57,7 @@ export const HeroImageCard: React.FC<HeroImageCardProps> = (props) => {
             title={title}
           />
         </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
-        </CardActions>
+
       </Card>
     </Grid >
 
