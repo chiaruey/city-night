@@ -1,30 +1,26 @@
 import React from 'react';
 // import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import { makeStyles } from '@material-ui/core/styles';
+// import Box from '@material-ui/core/Box';
+// import { makeStyles } from '@material-ui/core/styles';
+import {HeroImageCard} from './HeroImageCard';
 
 export const Home: React.FC = () => {
 
 
-  const useStyles = makeStyles((theme) => ({
-    pct100: {
-      maxWidth: '100%',
-      maxHeight: '100%'
-    }
-  }));
+  // const useStyles = makeStyles((theme) => ({
+  //   pct100: {
+  //     maxWidth: '100%',
+  //     maxHeight: '100%'
+  //   }
+  // }));
 
-  const img_src = '/static/images/Starry-Night.jpg';
-  const classes = useStyles();
+  const starry_night_src = '/static/images/Starry-Night.jpg';
+  // const classes = useStyles();
 
   return (
-    // <Container maxWidth="sm">
-
-    //   <Box color="text.primary">
-    //     <img src={img_src} className={classes.heroImage} />
-    //   </Box>
-    // </Container>
     <React.Fragment>
-      <Box
+      <HeroImageCard title="starry night" artist="Vincent van Gogh" year="1889" src={starry_night_src}/>
+      {/* <Box
         display="flex"
         // bgcolor="lightgreen"
         alignItems="center"
@@ -33,7 +29,7 @@ export const Home: React.FC = () => {
       >
         <img src={img_src} className={classes.pct100} />
 
-      </Box>
+      </Box> */}
     </React.Fragment>
   );
 }

@@ -1,9 +1,6 @@
 import React from 'react';
-import { Button, Grid, Typography, Avatar, CardHeader, CardContent, CardMedia, Card, CardActions, CardActionArea } from '@material-ui/core';
+import { Button, Grid, Typography, CardHeader, CardContent, CardMedia, Card, CardActions, CardActionArea } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { MovieInfo } from '../MovieSchema';
-import clsx from 'clsx';
-
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -39,38 +36,33 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-interface MovieInfoCardProps {
-  movieInfo: MovieInfo,
-  index: number
+interface HeroImageCardProps {
+  title: string;
+  artist: string;
+  year: string;
+  src: string;
 }
 
-export const MovieInfoCard: React.FC<MovieInfoCardProps> = (props) => {
-  const { movieInfo, index } = props;
+export const HeroImageCard: React.FC<HeroImageCardProps> = (props) => {
+  const { title, artist, year, src} = props;
   const classes = useStyles();
-  const AvatarComponent = (
-    <Avatar className={clsx((index < 99) && classes.icon, (index >= 99) && classes.bigIcon)}>
-      <Typography variant="h6">
-        {index + 1}
-      </Typography>
-    </Avatar>
-  );
 
   return (
     <Grid item xs={12} sm={12} className={classes.movieInfoCard}>
       <Card className={classes.root}>
-        <CardHeader avatar={AvatarComponent} title={movieInfo.title} titleTypographyProps={{ variant: 'h5' }} />
+        <CardHeader title={title} titleTypographyProps={{ variant: 'h5' }} />
 
         <CardActionArea>
           <CardContent>
             <Typography variant="body2" color="textSecondary" component="p">
-              {movieInfo.overview}
+              {artist} , {year}
             </Typography>
           </CardContent>
           <CardMedia
             component="img"
             className={classes.media}
-            src={`https://image.tmdb.org/t/p/w300/${movieInfo.poster_path}`}
-            title={`${movieInfo.title}`}
+            src={src}
+            title={title}
           />
         </CardActionArea>
         <CardActions>
