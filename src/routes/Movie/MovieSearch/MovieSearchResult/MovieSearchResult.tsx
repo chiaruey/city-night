@@ -29,11 +29,24 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "100%",
       height: "100%"
     },
+    message: {
+      margin: "auto",
+      width: "fit-content"
+    },
     pagination: {
       margin: "5%"
     }
   })
 );
+
+const showPagination = (searchResponse: MovieSearchResponse, classes: any, page: number, handleChangePage: any, movieCount: number) => {
+  return (
+    <Grid item xs={12}>
+      <Box className={classes.pagination}>
+        <MoviePagination recordCount={movieCount} selectedPage={page} onChange={handleChangePage} />
+      </Box>
+    </Grid>);
+}
 
 const listOfMovies = (searchResponse: MovieSearchResponse, classes: any) => {
   const res: any[] = [];
@@ -90,7 +103,7 @@ export const MovieSearchResult: React.FC<MovieSearchResultProps> = (props) => {
       query = searchResponse.query;
       const totalPage = Math.ceil(movieCount / 20);
       resultMessage = movieCount + " movie" + ((movieCount > 1) ? "s" : "") +
-        " has been found by searching : \"" + query + "\" ( page " + page + " of " + totalPage + " )";
+        " found by searching : \"" + query + "\" ( page " + page + " of " + totalPage + " )";
     }
 
     return (
@@ -98,18 +111,15 @@ export const MovieSearchResult: React.FC<MovieSearchResultProps> = (props) => {
         <Grid item xs={12} >
           <Grid container>
             <Grid item xs={12} sm={12}>
-              <Box >
+              <Box className={classes.message}>
                 <Typography variant="h5" gutterBottom>
                   {resultMessage}
                 </Typography>
               </Box>
             </Grid>
+            {searchResponse && showPagination(searchResponse, classes, page, handleChangePage, movieCount)}
             {searchResponse && listOfMovies(searchResponse, classes)}
-            <Grid item xs={12}>
-              <Box className={classes.pagination}>
-                <MoviePagination recordCount={movieCount} selectedPage={page} onChange={handleChangePage} />
-              </Box>
-            </Grid>
+            {searchResponse && showPagination(searchResponse, classes, page, handleChangePage, movieCount)}
           </Grid>
         </Grid>
       </Grid>
