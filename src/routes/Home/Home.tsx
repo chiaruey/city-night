@@ -7,11 +7,15 @@ import { colors } from '../../theme/variables';
 export const Home: React.FC = () => {
   const useStyles = makeStyles((theme) => ({
     intro: {
-      color: colors.deepSeaBlue
+      color: colors.deepSeaBlue,
+      margin: "auto",
+      width: "fit-content"
     },
-    pct100: {
+    content: {
       maxWidth: '100%',
-      maxHeight: '100%'
+      maxHeight: '100%',
+      margin: "auto",
+      width: "fit-content"
     }
   }));
 
@@ -26,7 +30,7 @@ export const Home: React.FC = () => {
       </Typography>
       </Box>
 
-      <Container className={classes.pct100}>
+      <Container className={classes.content}>
         <HeroImageCard title="starry night" artist="Vincent van Gogh" year="1889" src={starry_night_src} />
       </Container>
     </React.Fragment>

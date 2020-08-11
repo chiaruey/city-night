@@ -27,6 +27,6 @@ export const MoviePagination: React.FC<MoviePaginationProps> = (props) => {
 
   useStyles();
   return (
-    <Pagination count={pageCount} page={selectedPage} siblingCount={3} onChange={onChange} />
+    <Pagination count={pageCount} page={selectedPage} siblingCount={3} onChange={onChange} color="secondary" size="large" />
   );
 };
