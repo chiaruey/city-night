@@ -58,7 +58,7 @@ export const MovieInfoCard: React.FC<MovieInfoCardProps> = (props) => {
   return (
     <Grid item xs={12} sm={12} className={classes.movieInfoCard}>
       <Card className={classes.root}>
-        <CardHeader avatar={AvatarComponent} title={movieInfo.title} titleTypographyProps={{ variant: 'h5' }} />
+        <CardHeader avatar={AvatarComponent} title={movieInfo.title} subheader={movieInfo.release_date} titleTypographyProps={{ variant: 'h5' }} />
 
         <CardActionArea>
           <CardContent>
@@ -66,12 +66,13 @@ export const MovieInfoCard: React.FC<MovieInfoCardProps> = (props) => {
               {movieInfo.overview}
             </Typography>
           </CardContent>
+          {movieInfo.poster_path &&
           <CardMedia
             component="img"
             className={classes.media}
             src={`https://image.tmdb.org/t/p/original/${movieInfo.poster_path}`}
             title={`${movieInfo.title}`}
-          />
+          />}
         </CardActionArea>
         <CardActions>
           <Button size="small" color="primary">
