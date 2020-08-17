@@ -1,8 +1,9 @@
 import React from 'react';
-import { Container, Typography, Box } from '@material-ui/core';
+import { Container, Typography, Box, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { HeroImageCard } from './HeroImageCard';
 import { colors } from '../../theme/variables';
+import { HeroImageInfo, HeroImageData } from './HomePageSchema';
 
 export const Home: React.FC = () => {
   const useStyles = makeStyles((theme) => ({
@@ -19,8 +20,22 @@ export const Home: React.FC = () => {
     }
   }));
 
-  const starry_night_src = '/static/images/Starry-Night.jpg';
+  // const starry_night_src = '/static/images/Starry-Night.jpg';
   const classes = useStyles();
+
+  const listPaintings = () => {
+    let res: any[] = [];
+
+    HeroImageData.heroImageList.forEach((heroImage: HeroImageInfo, index) => {
+        res.push(
+          <HeroImageCard title={heroImage.title} artist={heroImage.artist} year={heroImage.year} src={heroImage.src} />
+
+        )
+
+      });
+
+    return res;
+  }
 
   return (
     <React.Fragment>
@@ -31,7 +46,10 @@ export const Home: React.FC = () => {
       </Box>
 
       <Container className={classes.content}>
-        <HeroImageCard title="starry night" artist="Vincent van Gogh" year="1889" src={starry_night_src} />
+        <Grid container>
+          {listPaintings()}
+        </Grid>
+        {/* <HeroImageCard title="starry night" artist="Vincent van Gogh" year="1889" src={starry_night_src} /> */}
       </Container>
     </React.Fragment>
   );
