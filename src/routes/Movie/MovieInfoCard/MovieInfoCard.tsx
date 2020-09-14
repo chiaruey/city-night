@@ -75,7 +75,7 @@ export const MovieInfoCard: React.FC<MovieInfoCardProps> = (props) => {
           />}
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
+          <Button size="small" color="primary" href="/MovieDetail"> 
             Learn More
           </Button>
         </CardActions>
