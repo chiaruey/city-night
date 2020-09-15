@@ -2,6 +2,9 @@ import React from 'react';
 import { Avatar, Container, CssBaseline, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MovieCreationTwoTone from '@material-ui/icons/MovieCreationTwoTone';
+import {useMovieDetailState} from './useMovieDetailState';
+import {MovieDetailPayload} from './MovieDetailPayload';
+import {useRouter} from 'next/router';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -31,6 +34,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const MovieDetail: React.FC = () => {
+    const router = useRouter();
+    const { movieId } = router.query;
+    console.log('movieId == ' + movieId);
+    console.log('routerQuery = ', router.query);
+    const {fetchMovieDetail , result } = useMovieDetailState();
+    if (typeof movieId === "string") {
+        const payload: MovieDetailPayload = {
+            movieId: parseInt(movieId),
+        };
+        fetchMovieDetail(payload);
+    }
+
+
+    
 
     const classes = useStyles();
 
@@ -41,7 +58,10 @@ export const MovieDetail: React.FC = () => {
                 <Avatar className={classes.avatar}>
                     <MovieCreationTwoTone />
                 </Avatar>
-                <Typography component="h1" variant="h5">Movie Detail</Typography>
+                {result && 
+                <Typography component="h1" variant="h5">result.title</Typography>
+                }
+                
 
             </div>
         </Container>

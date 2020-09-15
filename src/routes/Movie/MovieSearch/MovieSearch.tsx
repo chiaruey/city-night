@@ -8,7 +8,6 @@ import { MovieSearchPayload } from './MovieSearchPayload';
 import MovieCreationTwoTone from '@material-ui/icons/MovieCreationTwoTone';
 
 import {useMovieSearchState} from './useMovieSearchState';
-
 import { MovieSearchResult } from './MovieSearchResult';
 
 const useStyles = makeStyles((theme) => ({
