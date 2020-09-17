@@ -124,7 +124,7 @@ export const PopularMoviesResult: React.FC<PopularMoviesResultProps> = (props) =
   };
 
   if (popularMoviesResponse) {
-    return generateResultComponent(popularMoviesResponse); return generateResultComponent(popularMoviesResponse);
+    return generateResultComponent(popularMoviesResponse); 
   } else {
     return <></>;
   }

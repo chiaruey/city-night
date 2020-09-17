@@ -1,13 +1,13 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 
 import {
-    movieDetail as movieDetailActionCreator,
+    getMovieDetail as movieDetailActionCreator,
     movieDetailResolved,
     movieDetailRejected
 } from '../action/movieDetailAction';
 import { MovieDetailResponse } from '../../MovieSchema';
 
-import { movieDetail } from './movieDetailService';
+import { invokeMovieDetail } from './movieDetailService';
 
 export function* movieDetailFlow() {
     yield takeEvery(movieDetailActionCreator, function* movieDetailActionCreatorFn(action) {
@@ -15,7 +15,7 @@ export function* movieDetailFlow() {
             console.log('movieDetailSaga.ts --> action = ', action);
 
             const args = { ...action.payload };
-            const movieDetailResponse: MovieDetailResponse = yield call(movieDetail, args);
+            const movieDetailResponse: MovieDetailResponse = yield call(invokeMovieDetail, args);
 
             yield put(movieDetailResolved(movieDetailResponse));
         } catch (e) {

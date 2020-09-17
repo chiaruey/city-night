@@ -3,14 +3,14 @@ import {MovieDetailPayload} from '../../MovieDetail/MovieDetailPayload';
 
 const movieDetailActionType = 'Movie/movieDetail';
 
-export function movieDetail(payload: MovieDetailPayload) {
+export function getMovieDetail(payload: MovieDetailPayload) {
   return {
     type: movieDetailActionType,
     payload
   } as const;
 }
 
-movieDetail.toString = () => movieDetailActionType;
+getMovieDetail.toString = () => movieDetailActionType;
 
 export function movieDetailResolved(results: MovieDetailResponse) {
   return {type: 'Movie/movieDetailResolved', payload: results} as const;

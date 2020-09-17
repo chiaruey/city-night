@@ -3,7 +3,7 @@ import axios from 'axios';
 import {MovieDetailPayload} from '../../MovieDetail/MovieDetailPayload';
 import {MovieDetailResponse} from '../../MovieSchema';
 
-export async function movieDetail(payload: MovieDetailPayload) {
+export async function invokeMovieDetail(payload: MovieDetailPayload) {
   console.log('movieDetailService.movieDetail has been called');
   const params: any = {...payload};
 

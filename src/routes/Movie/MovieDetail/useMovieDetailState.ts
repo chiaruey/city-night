@@ -2,14 +2,15 @@ import {useDispatch} from 'react-redux';
 
 import {useTypedSelector} from '../../../common/hooks/useTypedSelector';
 
-import {movieDetail} from '../redux/action/movieDetailAction';
+import {getMovieDetail} from '../redux/action/movieDetailAction';
 import {MovieDetailPayload} from './MovieDetailPayload';
 
 const useMovieDetailState = () => {
-  const dispatch = useDispatch();
 
   const fetchMovieDetail = (payload: MovieDetailPayload) => {
-    dispatch(movieDetail(payload));
+    console.log('fetchMovieDetail is called !');
+    const dispatch = useDispatch();
+    dispatch(getMovieDetail(payload));
   };
 
   const movieDetailType = useTypedSelector((state) => state.movieDetailRoute);
