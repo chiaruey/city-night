@@ -1,6 +1,5 @@
 import React from 'react';
-import { Grid, Typography, Box, Container, CssBaseline, Avatar } from '@material-ui/core';
-import MovieCreationTwoTone from '@material-ui/icons/MovieCreationTwoTone';
+import { Grid, Typography, Box, Container, CssBaseline, CardContent, CardMedia, Card } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { MovieDetailResponse } from '../../../MovieSchema';
 
@@ -26,6 +25,10 @@ const useStyles = makeStyles((theme: Theme) =>
     avatar: {
       margin: theme.spacing(1),
       backgroundColor: theme.palette.secondary.main,
+    },
+    media: {
+      width: "100%",
+      height: "100%"
     }
   })
 );
@@ -36,9 +39,22 @@ const showMovieDetail = (movieDetailResponse: MovieDetailResponse, classes: any)
       <Grid container>
         <Grid item xs={12} sm={12}>
           <Box className={classes.message}>
-            <Typography variant="h5" gutterBottom>
-              {movieDetailResponse.title}
-            </Typography>
+            <Card className={classes.root}>
+              <CardMedia
+                component="img"
+                className={classes.media}
+                src={`https://image.tmdb.org/t/p/original/${movieDetailResponse.poster_path}`}
+                title={movieDetailResponse.title}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {movieDetailResponse.title}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {movieDetailResponse.overview}
+                </Typography>
+              </CardContent>
+            </Card>
           </Box>
         </Grid>
       </Grid>);
@@ -54,18 +70,13 @@ interface MovieDetailResultProps {
 
 export const MovieDetailResult: React.FC<MovieDetailResultProps> = (props) => {
 
-  const {movieDetailResponse } = props;
+  const { movieDetailResponse } = props;
   const classes = useStyles();
 
   const generateResultComponent = (searchResponse: MovieDetailResponse | undefined) => {
     return (
       <Container component="main" maxWidth="md">
         <CssBaseline />
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <MovieCreationTwoTone />
-          </Avatar>
-        </div>
         <Grid container className={classes.resultSection}>
           <Grid item xs={12} >
             {searchResponse && showMovieDetail(searchResponse, classes)}
