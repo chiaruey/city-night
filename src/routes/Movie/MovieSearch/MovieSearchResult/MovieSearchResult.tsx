@@ -127,7 +127,7 @@ export const MovieSearchResult: React.FC<MovieSearchResultProps> = (props) => {
   };
 
   if (movieSearchResponse) {
-    return generateResultComponent(movieSearchResponse); return generateResultComponent(movieSearchResponse);
+    return generateResultComponent(movieSearchResponse);
   } else {
     return <></>;
   }

@@ -60,7 +60,7 @@ export const MovieInfoCard: React.FC<MovieInfoCardProps> = (props) => {
       <Card className={classes.root}>
         <CardHeader avatar={AvatarComponent} title={movieInfo.title} subheader={movieInfo.release_date} titleTypographyProps={{ variant: 'h5' }} />
 
-        <CardActionArea>
+        <CardActionArea href={`/MovieDetail/${movieInfo.id}`}>
           <CardContent>
             <Typography variant="body2" color="textSecondary" component="p">
               {movieInfo.overview}
@@ -75,7 +75,7 @@ export const MovieInfoCard: React.FC<MovieInfoCardProps> = (props) => {
           />}
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary" href="/MovieDetail"> 
+          <Button size="small" color="primary" href={`/MovieDetail/${movieInfo.id}`}> 
             Learn More
           </Button>
         </CardActions>

@@ -2,7 +2,7 @@ import {Reducer, AnyAction} from 'redux';
 import {MovieDetailState} from '../../MovieDetail/MovieDetailState';
 
 const defaultState: MovieDetailState = {
-  payload: {movieId: 1771},
+  payload: {movieId: 0},
   isSearchInProgress: false
 };
 
